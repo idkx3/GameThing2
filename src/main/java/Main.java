@@ -17,6 +17,7 @@ public class Main {
         Player p = new Player(pos, dim, 10.0f,RED);
         Enemy e = new Enemy(new Vector2().x((float)Math.random()*100.0f).y((float)Math.random()*100.0f), dim, 20.0f, BLUE, p);
         while (!WindowShouldClose()) {
+
             p.Update();
             e.Update();
             BeginDrawing();

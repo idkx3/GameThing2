@@ -1,3 +1,4 @@
+import com.raylib.Raylib;
 import com.raylib.Raylib.Vector2;
 import static com.raylib.Colors.*;
 import static com.raylib.Raylib.*;
@@ -20,6 +21,21 @@ public class Rectangle {
 
     public Vector2 GetPos() {
         return pos;
+    }
+
+    public boolean IsColliding(Rectangle other) {
+        boolean collision = false;
+        float otherX = other.GetPos().x();
+        float otherY = other.GetPos().y();
+        float otherWidth = other.GetDim().x();
+        float otherHeight = other.GetDim().y();
+        if ((pos.x() < (otherX + otherWidth) && (pos.x() + dim.x()) > otherX) &&
+                (pos.y() < (otherY + otherHeight) && (pos.y() + dim.y()) > otherY)) collision = true;
+        return collision;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public Vector2 GetDim() {

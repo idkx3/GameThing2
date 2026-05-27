@@ -18,8 +18,8 @@ public class Enemy extends Entity {
 
         }
 
-        SetY(Utils.Lerp(GetPos().y(), p.GetPos().y(), .1f));
-        SetX( Utils.Lerp(GetPos().x(), p.GetPos().x(), .1f) );
+        SetY(Utils.Lerp(GetPos().y(), p.GetPos().y(), .05f));
+        SetX( Utils.Lerp(GetPos().x(), p.GetPos().x(), .05f) );
 
 
 
@@ -27,7 +27,7 @@ public class Enemy extends Entity {
 
     @Override
     public void Draw() {
-        rect.Draw();
+        GetRect().Draw();
     }
 
 }

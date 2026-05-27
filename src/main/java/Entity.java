@@ -4,7 +4,7 @@ import static com.raylib.Raylib.*;
 
 public abstract class Entity {
 
-    protected Rectangle rect;
+    private Rectangle rect;
 
     public Entity(Vector2 pos,Vector2 dim,float speed,Color color) {
         this.rect = new Rectangle(pos, dim, speed, color);
@@ -14,6 +14,10 @@ public abstract class Entity {
 
     public abstract void Draw();
 
+    public Rectangle GetRect() {
+        return rect;
+    }
+
     public void SetX(float x) {
         rect.GetPos().x(x);
     }
@@ -22,7 +26,13 @@ public abstract class Entity {
         rect.GetPos().y(y);
     }
 
+    public void SetColor(Color c) {
+        rect.setColor(c);
+    }
 
+    public Rectangle getRect() {
+        return rect;
+    }
 
     public Vector2 GetPos() {
         return rect.GetPos();
@@ -38,6 +48,10 @@ public abstract class Entity {
 
     public Color GetColor() {
         return rect.GetColor();
+    }
+
+    public boolean IsColliding(Rectangle other) {
+        return rect.IsColliding(other);
     }
 
 }
