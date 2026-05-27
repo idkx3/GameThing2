@@ -10,12 +10,12 @@ public class Bullet extends Entity{
 
     @Override
     public void Update() {
-        this.GetPos().y(this.GetPos().y()+GetSpeed());
+        this.GetPos().y(this.GetPos().y()-GetSpeed());
     }
 
     public boolean IsOffscreen() {
-        return GetPos().x() > GetScreenWidth()
-                || GetPos().y() > GetScreenHeight() ;
+        return GetPos().x() > GetScreenWidth() || GetPos().x() < 0
+                || GetPos().y() > GetScreenHeight()|| GetPos().y()<0 ;
     }
 
     @Override

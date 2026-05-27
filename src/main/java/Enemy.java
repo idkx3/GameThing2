@@ -18,8 +18,8 @@ public class Enemy extends Entity {
 
         }
 
-        SetY(Utils.Lerp(GetPos().y(), p.GetPos().y(), .05f));
-        SetX( Utils.Lerp(GetPos().x(), p.GetPos().x(), .05f) );
+        SetY(Utils.Lerp(GetPos().y(), p.GetPos().y(), GetSpeed()));
+        SetX( Utils.Lerp(GetPos().x(), p.GetPos().x(), GetSpeed()) );
 
 
 

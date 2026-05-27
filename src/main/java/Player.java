@@ -26,10 +26,11 @@ public class Player extends Entity{
         } else if(IsKeyDown(KEY_SPACE)) {
             Shoot();
         }
-       for(int i = bullets.size()-1; i>0; i--) {
+       for(int i = bullets.size()-1; i>=0; i--) {
            if(bullets.get(i).IsOffscreen()) {
                bullets.remove(bullets.get(i));
                System.out.println("Removing");
+
            } else {
                bullets.get(i).Update();
            }
@@ -50,7 +51,7 @@ public class Player extends Entity{
     }
 
     private void Shoot() {
-        Vector2 bulletPos = new Vector2().x(GetPos().x()).y(GetPos().y()+20.0f);
+        Vector2 bulletPos = new Vector2().x(GetPos().x()).y(GetPos().y()-20.0f);
 
         bullets.add(new Bullet(bulletPos, GetDim(), GetSpeed(), YELLOW));
     }
