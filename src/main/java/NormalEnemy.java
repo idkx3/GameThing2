@@ -11,4 +11,9 @@ public class NormalEnemy extends Enemy{
         SetY(Utils.Lerp(GetPos().y(), p.GetPos().y(), GetSpeed()));
         SetX( Utils.Lerp(GetPos().x(), p.GetPos().x(), GetSpeed()) );
     }
+
+    @Override
+    public void Die() {
+        p.AddMoney(10);
+    }
 }

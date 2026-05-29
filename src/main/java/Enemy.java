@@ -2,7 +2,7 @@ import com.raylib.Raylib.Vector2;
 import static com.raylib.Colors.*;
 import static com.raylib.Raylib.*;
 
-public class Enemy extends Entity {
+public abstract class Enemy extends Entity {
 
     protected Player p;
     public Enemy(Vector2 pos, Vector2 dim, float speed, Color color, Player p) {
@@ -23,6 +23,8 @@ public class Enemy extends Entity {
 
 
     }
+
+    public abstract void Die();
 
     @Override
     public void Draw() {

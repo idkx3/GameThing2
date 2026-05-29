@@ -9,10 +9,12 @@ public class Player extends Entity{
 
     private ArrayList<Bullet> bullets;
     private float health;
+    private int money;
     public Player(Vector2 pos,Vector2 dim,float speed,Color color) {
         super(pos, dim, speed,color);
         bullets = new ArrayList<>();
         health = 100.0f;
+        money = 0;
     }
     @Override
     public void Update() {
@@ -57,6 +59,18 @@ public class Player extends Entity{
 
     public float getHealth() {
         return health;
+    }
+
+    public void AddMoney(int am) {
+        money += am;
+    }
+
+    public void SetMoney(int am) {
+        money = am;
+    }
+
+    public int GetMoney() {
+        return money;
     }
 
     public ArrayList<Bullet> GetBullets() {

@@ -33,6 +33,11 @@ public class ShootingEnemy extends Enemy{
     }
 
     @Override
+    public void Die() {
+        p.AddMoney(100);
+    }
+
+    @Override
     public void Draw() {
         super.Draw();
         for(Bullet b: bullets) {
