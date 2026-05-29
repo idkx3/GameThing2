@@ -4,10 +4,11 @@ import static com.raylib.Raylib.*;
 
 public abstract class Entity {
 
-    private Rectangle rect;
-
+    private final Rectangle rect;
+    private final float speed;
     public Entity(Vector2 pos,Vector2 dim,float speed,Color color) {
-        this.rect = new Rectangle(pos, dim, speed, color);
+        this.rect = new Rectangle(pos, dim, color);
+        this.speed = speed;
     }
 
     public abstract void Update();
@@ -43,7 +44,7 @@ public abstract class Entity {
     }
 
     public float GetSpeed() {
-        return rect.GetSpeed();
+        return speed;
     }
 
     public Color GetColor() {

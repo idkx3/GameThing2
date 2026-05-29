@@ -14,9 +14,9 @@ public class MainGameScreen extends  Screen{
     public MainGameScreen(int width, int height) {
         super(width,height);
         Raylib.Vector2 pos = new Raylib.Vector2();
-        pos.x(100.0f);
-        pos.y(100.0f);
-        p = new Player(pos, rectDim, 10.0f,ORANGE);
+        pos.x(GetScreenWidth()/2);
+        pos.y(GetScreenHeight()/2);
+        p = new Player(pos, rectDim, 100.0f,ORANGE);
         enemies = new ArrayList<>();
         Refresh(Utils.GetRandomInt(100));
         score = 0;
@@ -28,6 +28,9 @@ public class MainGameScreen extends  Screen{
         for(int i = 0; i<am; i++) {
             float ranx = Utils.GetRandomFloat(0.0f, GetScreenWidth());
             float randy = Utils.GetRandomFloat(0.0f, GetScreenHeight());
+            Rectangle r = new Rectangle(new Vector2().x(ranx).y(randy), rectDim, RED);
+            Rectangle zone = new Rectangle(p.GetPos(), new Vector2().x(p.GetDim().x()*9).y(p.GetDim().y()*9), RED);
+            if(zone.IsColliding(r)) {continue;}
             Vector2 randPos = new Vector2().x(ranx).y(randy);
             int rand = Utils.GetRandomInt(2);
             if(rand == 0) {

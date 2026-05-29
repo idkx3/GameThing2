@@ -5,17 +5,22 @@ import static com.raylib.Raylib.GetScreenWidth;
 
 public class Bullet extends Entity{
     private boolean neg;
-    public Bullet(Raylib.Vector2 pos, Raylib.Vector2 dim, float speed, Raylib.Color color,boolean neg) {
+    private BulletDir dir;
+    public Bullet(Raylib.Vector2 pos, Raylib.Vector2 dim, float speed, Raylib.Color color,BulletDir dir) {
         super(pos, dim, speed, color);
-        this.neg = neg;
+        this.dir = dir;
     }
 
     @Override
     public void Update() {
-        if(neg) {
-            this.GetPos().y(this.GetPos().y() - GetSpeed());
-        } else {
-            this.GetPos().y(this.GetPos().y()+GetSpeed());
+        if(dir == BulletDir.DOWN) {
+            this.GetPos().y(this.GetPos().y() + GetSpeed());
+        } else if(dir == BulletDir.UP) {
+            this.GetPos().y(this.GetPos().y()-GetSpeed());
+        } else if(dir == BulletDir.LEFT) {
+            this.GetPos().x(this.GetPos().x()+GetSpeed());
+        } else if(dir == BulletDir.RIGHT) {
+            this.GetPos().x(this.GetPos().x()-GetSpeed());
         }
     }
 

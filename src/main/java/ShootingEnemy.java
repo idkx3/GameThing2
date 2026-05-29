@@ -20,7 +20,7 @@ public class ShootingEnemy extends Enemy{
                     new Raylib.Vector2().x(20.0f).y(20.0f),
                     20.0f,
                     PURPLE,
-                    true
+                    BulletDir.UP
             ));
         }
         for(Bullet b: bullets) {

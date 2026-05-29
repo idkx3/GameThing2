@@ -8,11 +8,13 @@ public class Rectangle {
     private Vector2 dim;
     private float speed;
     private Color color;
-    public Rectangle(Vector2 pos, Vector2 dim, float speed,Color color) {
+
+    public Rectangle(Vector2 pos, Vector2 dim, Color color) {
         this.pos = pos;
         this.dim = dim;
         this.speed = speed;
         this.color = color;
+
     }
 
     public void Draw() {
@@ -32,6 +34,17 @@ public class Rectangle {
         if ((pos.x() < (otherX + otherWidth) && (pos.x() + dim.x()) > otherX) &&
                 (pos.y() < (otherY + otherHeight) && (pos.y() + dim.y()) > otherY)) collision = true;
         return collision;
+    }
+
+    public boolean IsColliding(Vector2 pos) {
+        boolean col = false;
+        float pX = pos.x();
+        float pY = pos.y();
+        if ((pX >= GetPos().x()) &&
+                (pX< (GetPos().x() + GetDim().x()))
+                && (pY >= GetPos().y()) &&
+                (pY < (GetPos().y() + GetDim().y()))) col = true;
+        return col;
     }
 
     public void setColor(Color color) {
