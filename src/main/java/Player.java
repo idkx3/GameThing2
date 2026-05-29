@@ -8,10 +8,11 @@ import static com.raylib.Raylib.*;
 public class Player extends Entity{
 
     private ArrayList<Bullet> bullets;
-
+    private float health;
     public Player(Vector2 pos,Vector2 dim,float speed,Color color) {
         super(pos, dim, speed,color);
         bullets = new ArrayList<>();
+        health = 100.0f;
     }
     @Override
     public void Update() {
@@ -24,7 +25,9 @@ public class Player extends Entity{
         } else if(IsKeyDown(KEY_LEFT)) {
             SetX(GetPos().x()-GetSpeed());
         } else if(IsKeyDown(KEY_SPACE)) {
-            Shoot();
+            Shoot(true);
+        } else if(IsKeyDown(KEY_LEFT_SHIFT)) {
+            Shoot(false);
         }
        for(int i = bullets.size()-1; i>=0; i--) {
            if(bullets.get(i).IsOffscreen()) {
@@ -42,18 +45,28 @@ public class Player extends Entity{
             b.Draw();
         }
         GetRect().Draw();
-
+        DrawRectangleV(new Vector2().x(0.0f).y(0.0f),
+                new Vector2().x(health).y(10.0f), GREEN);
     }
 
+    public void DecHealth(float am) {
+        health-=am;
+        System.out.println(health);
+    }
+
+
+    public float getHealth() {
+        return health;
+    }
 
     public ArrayList<Bullet> GetBullets() {
         return bullets;
     }
 
-    private void Shoot() {
+    private void Shoot(boolean neg) {
         Vector2 bulletPos = new Vector2().x(GetPos().x()).y(GetPos().y()-20.0f);
 
-        bullets.add(new Bullet(bulletPos, GetDim(), GetSpeed(), YELLOW));
+        bullets.add(new Bullet(bulletPos, GetDim(), GetSpeed(), YELLOW,neg));
     }
 
 

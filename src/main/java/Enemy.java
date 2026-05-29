@@ -4,7 +4,7 @@ import static com.raylib.Raylib.*;
 
 public class Enemy extends Entity {
 
-    private Player p;
+    protected Player p;
     public Enemy(Vector2 pos, Vector2 dim, float speed, Color color, Player p) {
         super(pos, dim, speed,color);
         this.p = p;
@@ -18,8 +18,7 @@ public class Enemy extends Entity {
 
         }
 
-        SetY(Utils.Lerp(GetPos().y(), p.GetPos().y(), GetSpeed()));
-        SetX( Utils.Lerp(GetPos().x(), p.GetPos().x(), GetSpeed()) );
+
 
 
 

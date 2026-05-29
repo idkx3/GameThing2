@@ -4,13 +4,19 @@ import static com.raylib.Raylib.GetScreenHeight;
 import static com.raylib.Raylib.GetScreenWidth;
 
 public class Bullet extends Entity{
-    public Bullet(Raylib.Vector2 pos, Raylib.Vector2 dim, float speed, Raylib.Color color) {
+    private boolean neg;
+    public Bullet(Raylib.Vector2 pos, Raylib.Vector2 dim, float speed, Raylib.Color color,boolean neg) {
         super(pos, dim, speed, color);
+        this.neg = neg;
     }
 
     @Override
     public void Update() {
-        this.GetPos().y(this.GetPos().y()-GetSpeed());
+        if(neg) {
+            this.GetPos().y(this.GetPos().y() - GetSpeed());
+        } else {
+            this.GetPos().y(this.GetPos().y()+GetSpeed());
+        }
     }
 
     public boolean IsOffscreen() {
