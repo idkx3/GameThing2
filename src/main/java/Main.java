@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        InitWindow(1920, 600, "Demo");
+        InitWindow(800, 450, "Demo");
         SetTargetFPS(60);
 
 

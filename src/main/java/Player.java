@@ -11,6 +11,7 @@ public class Player extends Entity{
     private float health;
     private int money;
     private int counter;
+    private PowerUp powerUp;
     public Player(Vector2 pos,Vector2 dim,float speed,Color color) {
         super(pos, dim, speed,color);
         bullets = new ArrayList<>();
@@ -47,6 +48,9 @@ public class Player extends Entity{
                 counter++;
             }
 
+        } else if(IsKeyDown(KEY_R) && powerUp != null) {
+            powerUp.Execute(this);
+            powerUp = null;
         }
        for(int i = bullets.size()-1; i>=0; i--) {
            if(bullets.get(i).IsOffscreen()) {
@@ -68,9 +72,17 @@ public class Player extends Entity{
                 new Vector2().x(health).y(10.0f), GREEN);
     }
 
+    public void SetPowerUp(PowerUp p) {
+        powerUp = p;
+    }
+
     public void DecHealth(float am) {
         health-=am;
-        System.out.println(health);
+
+    }
+
+    public void AddHealth(float am) {
+        health += am;
     }
 
 

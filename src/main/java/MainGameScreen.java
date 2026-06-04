@@ -12,16 +12,21 @@ public class MainGameScreen extends  Screen{
     private  final Raylib.Vector2 rectDim = new Raylib.Vector2().x(20.0f).y(20.0f);
     private int score;
     public MainGameScreen(int width, int height) {
-        super(width,height);
+
         Raylib.Vector2 pos = new Raylib.Vector2();
         pos.x(GetScreenWidth()/2);
         pos.y(GetScreenHeight()/2);
-        p = new Player(pos, rectDim, 100.0f,ORANGE);
+        this(width,height, new Player(pos, new Raylib.Vector2().x(20.0f).y(20.0f), 100.0f,ORANGE));
+
+    }
+
+    public MainGameScreen(int width, int height, Player p) {
+        super(width,height);
+
+        this.p = p;
         enemies = new ArrayList<>();
-        Refresh(Utils.GetRandomInt(100));
+        Refresh(Utils.GetRandomInt(1,2));
         score = 0;
-
-
     }
 
     public  void Refresh(int am) {

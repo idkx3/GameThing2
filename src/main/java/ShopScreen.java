@@ -7,6 +7,7 @@ public class ShopScreen extends Screen{
     private int textX;
     private int textY;
     private Button b;
+    private Button exitButton;
     public ShopScreen(int width, int height,Player p) {
         super(width, height);
         this.p = p;
@@ -17,7 +18,13 @@ public class ShopScreen extends Screen{
                 plyr->{
                     if(plyr.GetMoney()>0) {
                         plyr.AddMoney(-10);
+                        plyr.SetPowerUp(new HealthRegenPowerUp());
                     }
+
+                }));
+        exitButton = new Button(textX, (height/2)-(size/4), "Exit", 20,
+                (player -> {
+                    Main.SetScreen(new MainGameScreen(width,height, this.p));
                 }));
     }
 
@@ -27,11 +34,12 @@ public class ShopScreen extends Screen{
         ClearBackground(BLACK);
         DrawText("You have " + p.GetMoney() + " dollar(s)", textX, textY, 20, GREEN);
         b.Draw();
+        exitButton.Draw();
         EndDrawing();
     }
 
     @Override
     public void Update() {
-        b.Update(p);
+        b.Update(p);exitButton.Update(p);
     }
 }
