@@ -18,6 +18,7 @@ public class Player extends Entity{
         health = 100.0f;
         money = 0;
         counter = 0;
+        powerUp = new HealthRegenPowerUp();
     }
     @Override
     public void Update() {
@@ -33,15 +34,15 @@ public class Player extends Entity{
         } else if(IsKeyDown(KEY_LEFT)) {
             float speed = GetSpeed()*GetFrameTime();
             SetX((GetPos().x()-speed));
-        } else if(IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_LEFT_SHIFT) || IsKeyDown(KEY_A) || IsKeyDown(KEY_S)) {
+        } else if(IsKeyDown(KEY_W) || IsKeyDown(KEY_S) || IsKeyDown(KEY_A) || IsKeyDown(KEY_D)) {
             if(counter>=10) {
-                if(IsKeyDown(KEY_SPACE)) {
+                if(IsKeyDown(KEY_W)) {
                     Shoot(BulletDir.UP);
-                } else if(IsKeyDown(KEY_LEFT_SHIFT)) {
+                } else if(IsKeyDown(KEY_S)) {
                     Shoot(BulletDir.DOWN);
                 } else if(IsKeyDown(KEY_A)) {
                     Shoot(BulletDir.RIGHT);
-                } else if(IsKeyDown(KEY_S)) {
+                } else if(IsKeyDown(KEY_D)) {
                     Shoot(BulletDir.LEFT);
                 }
             } else {
@@ -50,6 +51,7 @@ public class Player extends Entity{
 
         } else if(IsKeyDown(KEY_R) && powerUp != null) {
             powerUp.Execute(this);
+            System.out.println("executing...");
             powerUp = null;
         }
        for(int i = bullets.size()-1; i>=0; i--) {
@@ -107,7 +109,7 @@ public class Player extends Entity{
     }
 
     private void Shoot(BulletDir dir) {
-        Vector2 bulletPos = new Vector2().x(GetPos().x()).y(GetPos().y()-20.0f);
+        Vector2 bulletPos = new Vector2().x(GetPos().x()).y(GetPos().y());
 
         bullets.add(new Bullet(bulletPos, GetDim(),20.0f , YELLOW,dir));
     }

@@ -15,6 +15,10 @@ public class Utils {
         return ThreadLocalRandom.current().nextInt(min,max);
     }
 
+    public static <T> T GetRandomElement(T[] arr) {
+        return arr[rand.nextInt(arr.length)];
+    }
+
     public static float GetRandomFloat(float max) {
         return GetRandomFloat(0.0f, max);
     }

@@ -25,7 +25,7 @@ public class MainGameScreen extends  Screen{
 
         this.p = p;
         enemies = new ArrayList<>();
-        Refresh(Utils.GetRandomInt(1,2));
+        Refresh(Utils.GetRandomInt(1,100));
         score = 0;
     }
 
