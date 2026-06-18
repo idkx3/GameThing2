@@ -4,4 +4,5 @@
 <img width="757" height="419" alt="image" src="https://github.com/user-attachments/assets/da114b8e-901b-4d32-bfd0-2ac6062734b0" />
 <img width="785" height="437" alt="image" src="https://github.com/user-attachments/assets/a9a1359f-7a1d-4189-a2f3-6ef4cfef847b" />
 
-
+# This game is distributed under a CC BY-NC license.
+  [Link to license](https://github.com/idkx3/GameThing2/blob/master/LICENSE)
